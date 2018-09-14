@@ -3,6 +3,10 @@
 <head>
   <title>Trabajo Final</title>
   <!-- Latest compiled and minified CSS -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <style>
@@ -33,7 +37,8 @@
 
   <h4>Número de coincidencias {{numero}}</h4>
   <div>
-      <table class="table">
+      <table id="example" class="display" style="width:100%">
+        <thead>
         <tr>
           <th>Titulo</th>
           <th>Tipo</th>
@@ -41,7 +46,8 @@
           <th>Condición</th>
           <th>Ubicación</th>
         </tr>
-
+      </thead>
+      <tbody>
         {% for d in data %}
         <tr>
           <td>{{d['titulo'].decode('utf-8')}}</td>
@@ -50,8 +56,8 @@
           <td>{{d['condicion'].decode('utf-8')}}</td>
           <td>{{d['ubicacion'].decode('utf-8')}}</td>
         </tr>
-
         {% endfor %}
+      </tbody>
       </table>
   </div>
   {% endif %}
@@ -78,4 +84,9 @@
   </div>
 </div>
 </body>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#example').DataTable();
+} );
+</script>
 </html>

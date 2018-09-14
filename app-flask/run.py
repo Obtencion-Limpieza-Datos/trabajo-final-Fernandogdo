@@ -27,11 +27,11 @@ def registros():
     numero = None
     if request.method == 'POST':
         primero = request.form['primero']
-        primero = primero.upper()
+        primero = primero.lower()
         print "%s" % (primero)
 
         if form.validate():
-            connection = sqlite3.connect("../notebooks/productos.db")
+            connection = sqlite3.connect("../notebooks/productos1.db")
             connection.text_factory = str
             df = pd.read_sql_query("SELECT * from productos", connection)
             data = df[(df['tipo'].str.contains(primero))][['titulo','tipo','precio', 'condicion', 'ubicacion']]
